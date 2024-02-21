@@ -1,7 +1,7 @@
 const Todo = require('../models/todoModel');
 const mongoose = require('mongoose');
 
-//get all todos
+//get all todos and sort by created at date
 exports.getTodos = async (req, res) => {
   try {
     const todos = await Todo.find().sort({ createdAt: -1 });
