@@ -72,7 +72,7 @@ header a {
 
 .add-todo {
   max-width: 1400px;
-  padding: 20px;
+  padding: 10px;
   margin: 0 auto;
   display: flex; 
   flex-direction: column; 
@@ -189,4 +189,81 @@ img{
   width:  100%; 
   
   
+}
+
+.tab{
+  display: flex;
+}
+
+.filter-buttons {
+  display: flex;
+  margin-bottom:  20px;
+  
+}
+
+.filter-buttons button {
+  margin:  0  5px;
+  padding:  10px  12px;
+  border: none;
+  border-radius:  5px;
+  background-color: #fff;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  border: 3px solid #959595;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.filter-buttons button:hover {
+  background: #efffef;
+}
+
+.filter-buttons button.active {
+  border: 3px solid var(--primary);
+  background: #efffef;
+
+}
+
+.clear-button {
+  margin-left: auto;
+  align-items: center;
+}
+
+.clear-completed {
+  margin:  0  5px;
+  padding:  10px  12px;
+  border-radius: 5px;
+  border: 2px solid var(--error);
+  background: #ffefef;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  
+}
+
+.clear-completed:hover {
+  background: #dfa1a1;
+
+}
+
+.no-todos-message{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.no-todos-message img{
+  height: 400px;
+  width: 400px;
+}
+
+@media (max-width:  468px) {
+  .no-todos-message img {
+    margin-top: 40%;
+    height:  100%;
+    width:  100%;
+  }
 }
