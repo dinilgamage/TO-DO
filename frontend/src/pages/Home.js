@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
+import { useTodosContext } from '../hooks/useTodosContext';
 
 //components
 import TodoItem from '../components/TodoItem';
 
 const Home = () => {
-
-    const [todos, setTodos] = useState([]);
+    const { todos, dispatch } = useTodosContext();
 
     useEffect(() => {
         const fetchTodos = async () => {
             try {
                 const response = await axios.get('http://localhost:4000/todos');
-                setTodos(response.data);
+                dispatch({ type: 'SET_TODOS', payload: response.data });
             } catch (error) {
                 console.error('Error fetching todos:', error);
             }

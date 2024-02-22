@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useTodosContext } from '../hooks/useTodosContext';
 
 const AddTodo = () => {
+  const { dispatch } = useTodosContext();
   const [title, setTitle] = useState('');
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -17,6 +19,7 @@ const AddTodo = () => {
         setTitle('');
         setError(null);
         setSuccess('Todo added');
+        dispatch({ type: 'ADD_TODO', payload: response.data });
     } catch (error) {
         console.error('Error adding todo:', error);
         setError(error);
