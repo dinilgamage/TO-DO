@@ -87,7 +87,7 @@ exports.deleteTodo = async (req, res) => {
       return res.status(404).json({ error: 'Todo not found' });
     }
 
-    res.status(200).json({ message: 'Todo deleted', todo });
+    res.status(200).json(todo);
     
   } catch (err) {
     res.status(500).json({ message: err.message });

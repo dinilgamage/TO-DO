@@ -167,3 +167,15 @@ div.success{
   margin-top: 20px 0;
 }
 
+.icon-container{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+img{
+  width: 20px;
+  height: 20px;
+  padding: 5px 8px;
+  cursor: pointer;
+}
