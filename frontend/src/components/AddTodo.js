@@ -3,10 +3,9 @@ import { useState } from 'react';
 import { useTodosContext } from '../hooks/useTodosContext';
 
 const AddTodo = () => {
-  const { dispatch } = useTodosContext();
+  const { dispatch, successMessage } = useTodosContext();
   const [title, setTitle] = useState('');
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -18,12 +17,11 @@ const AddTodo = () => {
         console.log(response);
         setTitle('');
         setError(null);
-        setSuccess('Todo added');
         dispatch({ type: 'ADD_TODO', payload: response.data });
     } catch (error) {
         console.error('Error adding todo:', error);
         setError(error);
-        setSuccess(null);
+        successMessage && dispatch({ type: 'CLEAR_SUCCESS_MESSAGE' });
     }
 }
 
@@ -31,7 +29,7 @@ const AddTodo = () => {
   return (
       <div className="add-todo">
         {error && <div className="error">{error.message}</div>}
-        {success && <div className="success">{success}</div>}
+        {successMessage && <div className="success">{successMessage}</div>}
         <form onSubmit={handleSubmit}>
         <div className="form-control">
           <input 
