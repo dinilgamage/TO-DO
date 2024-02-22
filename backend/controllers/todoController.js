@@ -103,3 +103,13 @@ exports.deleteTodo = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+exports.deleteCompletedTodos = async (req, res) => {
+  try {
+    await Todo.deleteMany({ completed: true });
+    const activeTodos = await Todo.find();
+    res.status(200).json(activeTodos);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
