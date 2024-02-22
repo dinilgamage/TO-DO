@@ -11,6 +11,18 @@ const TodoItem = ({ todo }) => {
 
   };
 
+  const handleToggleCompletion = async () => {
+    try {
+      const response = await axios.put(`http://localhost:4000/todos/${todo._id}`, {
+        completed: !todo.completed
+      });
+      console.log(response);
+      dispatch({ type: 'TOGGLE_TODO_COMPLETION', payload: response.data });
+    } catch (error) {
+      console.error('Error toggling todo completion:', error);
+    }
+  };
+
   const handleDelete = async () => {
     
       try {
@@ -24,7 +36,7 @@ const TodoItem = ({ todo }) => {
   
   return (
     <div className={cardClass}>
-      <input type="checkbox" className="custom-checkbox" checked={todo.completed} readOnly />
+      <input type="checkbox" className="custom-checkbox" checked={todo.completed} onChange={handleToggleCompletion} />
       <span>{todo.title}</span>
       <div className="icon-container">
         <img src="/icons/edit.svg" alt="Edit" onClick={handleEdit} />

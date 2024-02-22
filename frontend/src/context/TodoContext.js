@@ -25,7 +25,16 @@ export const todoReducer = (state, action) => {
                 ...state,
                 successMessage: null
             }
-
+        case 'TOGGLE_TODO_COMPLETION':
+            return {
+                todos: state.todos.map((t) => {
+                    if (t._id === action.payload._id) {
+                        return action.payload;
+                    }
+                    return t;
+                }),
+                successMessage: 'Todo updated'
+            }
         default:
             return state;
     }

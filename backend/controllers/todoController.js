@@ -41,6 +41,9 @@ exports.createTodo = async (req, res) => {
   if (!title) {
     return res.status(400).json({ message: 'Enter a todo first' });
   }
+  if (title.length < 3) {
+    return res.status(400).json({ message: 'Todo must be at least 3 characters' });
+  }
 
   try {
     const todo = await Todo.create({ title });
@@ -62,13 +65,13 @@ exports.updateTodo = async (req, res) => {
   try {
     const todo = await Todo.findOneAndUpdate({_id: id}, {
       ...req.body
-    })
+    }, { new: true })
 
     if (!todo) {
         return res.status(404).json({ error: 'Todo not found' });
       }
 
-    res.status(200).json({ message: 'Todo updated', todo });
+    res.status(200).json(todo);
 
   } catch {
     res.status(400).json({ message: err.message });
