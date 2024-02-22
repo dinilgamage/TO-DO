@@ -38,6 +38,10 @@ exports.getTodo = async (req, res) => {
 exports.createTodo = async (req, res) => {
   const title = req.body.title;
 
+  if (!title) {
+    return res.status(400).json({ message: 'Enter a todo first' });
+  }
+
   try {
     const todo = await Todo.create({ title });
     res.status(200).json(todo);

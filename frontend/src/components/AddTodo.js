@@ -20,7 +20,7 @@ const AddTodo = () => {
         dispatch({ type: 'ADD_TODO', payload: response.data });
     } catch (error) {
         console.error('Error adding todo:', error);
-        setError(error);
+        setError(error.response.data.message);
         successMessage && dispatch({ type: 'CLEAR_SUCCESS_MESSAGE' });
     }
 }
@@ -28,7 +28,7 @@ const AddTodo = () => {
   
   return (
       <div className="add-todo">
-        {error && <div className="error">{error.message}</div>}
+        {error && <div className="error">{error}</div>}
         {successMessage && <div className="success">{successMessage}</div>}
         <form onSubmit={handleSubmit}>
         <div className="form-control">
