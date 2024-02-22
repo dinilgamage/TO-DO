@@ -33,7 +33,15 @@ export const todoReducer = (state, action) => {
                     }
                     return t;
                 }),
-                successMessage: 'Todo updated'
+            }
+        case 'UPDATE_TODO':
+            return {
+                todos: state.todos.map((t) => {
+                    if (t._id === action.payload._id) {
+                        return action.payload;
+                    }
+                    return t;
+                }),
             }
         default:
             return state;

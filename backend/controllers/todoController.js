@@ -44,6 +44,9 @@ exports.createTodo = async (req, res) => {
   if (title.length < 3) {
     return res.status(400).json({ message: 'Todo must be at least 3 characters' });
   }
+  if (title.length > 100) {
+    return res.status(400).json({ message: 'Todo must be at most 100 characters' });
+  }
 
   try {
     const todo = await Todo.create({ title });
