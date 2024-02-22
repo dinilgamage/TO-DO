@@ -1,13 +1,123 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+/* layout */
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
 body {
+  background-image: url('../public/bg.png'); 
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins";
+  
+}
+header {
+  background: #fff;
+}
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header a {
+  color: #333;
+  text-decoration: none;
+}
+.pages{
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
+  
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.todo-card {  
+  background-color: rgba(333, 333, 333, 0.7);
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border: 3px solid #959595;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-weight: 800;
 }
+
+.todo-card.completed span {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px; 
+  opacity: 0.6;
+}
+
+
+.custom-checkbox {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #333;
+  border-radius: 3px;
+  margin-right: 10px;
+  cursor: pointer;
+  
+
+}
+
+.custom-checkbox:checked {
+  background-image: url('../public/icons/tick.svg'); 
+  background-size: cover;
+  background-repeat: no-repeat; 
+}
+
+.add-todo {
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
+  display: flex; 
+}
+
+.add-todo form {
+  display: flex;
+  width: 100%;
+}
+
+.form-control {
+  flex-grow: 1; /* Allows the input container to take up available space */
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 0;
+  border: 4px solid #959595;
+  border-radius: 10px;
+  margin-right: 10px; /* Adjust spacing between input and button */
+}
+
+.form-control input[type="text"] {
+  border: none;
+  outline: none;
+  padding: 10px;
+  width: 100%; /* Ensures input fills the .form-control container */
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0; 
+}
+
+button[type="submit"]:hover {
+  background-color: darken(var(--primary), 10%);
+}
+
