@@ -287,6 +287,13 @@ nav button {
   font-family: "Poppins";
   cursor: pointer;
   font-size: 1em;
+  margin-left: 10px;
+}
+
+@media (max-width:  668px) { 
+  .container nav div span {
+    display: none;
+  }
 }
 
 /* auth forms */
@@ -302,7 +309,13 @@ nav button {
   border-radius:  5px;
   box-shadow:  0  2px  4px rgba(0,  0,  0,  0.2);
   overflow: auto;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width:  668px) { 
+  .auth-card {
+    margin-top: 10%;
+  }
 }
 
 .auth-card h3 {
@@ -333,17 +346,17 @@ nav button {
   width:  100%;
   padding:  10px; 
   margin-top: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius:  3px;
+  border-radius: 5px;
+  border: 2px solid var(--primary);
+  background: #f0ffef;
   cursor: pointer;
-  font-size:  16px; 
-  transition: background-color  0.3s ease; 
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
 }
 
 .auth-card button:hover {
-  background-color: #0056b3;
+  background: #a1dfb7;
 }
 
 .auth-card p {
