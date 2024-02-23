@@ -11,6 +11,10 @@ const TodoSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  user_id: {
+    type: String,
+    required: true,
+  },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Todo', TodoSchema);

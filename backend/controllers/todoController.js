@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 
 //get all todos and sort by created at date
 exports.getTodos = async (req, res) => {
+  const user_id = req.user._id;
   try {
-    const todos = await Todo.find().sort({ createdAt: -1 });
+    const todos = await Todo.find({user_id}).sort({ createdAt: -1 });
     res.status(200).json(todos);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -49,7 +50,8 @@ exports.createTodo = async (req, res) => {
   }
 
   try {
-    const todo = await Todo.create({ title });
+    const user_id = req.user._id;
+    const todo = await Todo.create({ title, user_id });
     res.status(200).json(todo);
   } catch (err) {
     res.status(400).json({ message: err.message });
