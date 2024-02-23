@@ -17,7 +17,7 @@ const AddTodo = () => {
     }
 
     try {
-        const response = await axios.post('http://localhost:4000/todos', {
+        const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/todos`, {
             title,
         }, {
             headers: {
