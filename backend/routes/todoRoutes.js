@@ -1,7 +1,12 @@
 
 const express = require('express');
-const router = express.Router();
 const todoController = require('../controllers/todoController');
+const requireAuth = require('../middleware/requireAuth');
+
+const router = express.Router();
+
+//require auth for all todo routes
+router.use(requireAuth);
 
 router.get('/', todoController.getTodos);
 router.get('/:id', todoController.getTodo);
