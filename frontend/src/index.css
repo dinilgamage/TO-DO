@@ -266,6 +266,10 @@ img{
   flex-direction: column;
 }
 
+.no-todos-message h2{
+  margin-top: -40px;
+}
+
 .no-todos-message img{
   height: 400px;
   width: 400px;
@@ -383,6 +387,7 @@ nav button {
   }
   .todo-card {
     padding: 9px; 
+
   }
   
   .todo-card span, .todo-card input[type="text"] {
@@ -405,5 +410,16 @@ nav button {
   .clear-completed {
     padding:  6px  10px;
   }
+  div.error{
+    margin-top: 0px;
+ 
+  }
+  div.success{
+    margin-top: 0px;
+   
+  }
+  
+
+
 }
 
