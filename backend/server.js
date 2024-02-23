@@ -24,6 +24,13 @@ app.use(cors(corsOptions))
 app.use('/todos', todoRoutes)
 app.use('/user', userRoutes)
 
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '../frontend/build/index.html'));
+});
+
 //db connection
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
