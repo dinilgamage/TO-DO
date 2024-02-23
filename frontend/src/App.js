@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useAuthContext } from '../src/hooks/useAuthContext';
+
 
 
 //pages and components
@@ -9,11 +11,12 @@ import Navbar from './components/Navbar';
 import AddTodo from './components/AddTodo';
 
 function App() {
+  const { user } = useAuthContext();
   return (
     <div className="App">
       <BrowserRouter>
       <Navbar />
-      <AddTodo />
+      {user && (<AddTodo />)}
       <div className="pages">
         <Routes>
           <Route 
