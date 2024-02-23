@@ -91,6 +91,7 @@ header a {
     margin-bottom:  10px;
   }
   
+  
 }
 
 .form-control {
@@ -372,7 +373,6 @@ nav button {
   text-align: center; 
 }
 
-/* Add this at the end of your CSS file */
 
 @media (max-width: 568px) {
   
@@ -381,6 +381,29 @@ nav button {
     font-size: 1.2rem; 
     margin: 10px;
   }
-
+  .todo-card {
+    padding: 9px; 
+  }
   
+  .todo-card span, .todo-card input[type="text"] {
+    font-weight: 800; 
+    font-size: 14px;
+  }
+  .btn-add{
+    font-size: 1rem;
+    height: 55px;
+  }
+
+  .form-control{
+    height: 50px;
+  }
+  
+  .filter-buttons button {
+
+    padding:  6px  10px;
+  }
+  .clear-completed {
+    padding:  6px  10px;
+  }
 }
+
