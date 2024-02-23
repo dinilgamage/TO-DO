@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useTodosContext } from '../hooks/useTodosContext';
+import { useAuthContext } from '../hooks/useAuthContext'; 
 
 
 //components
@@ -9,24 +10,40 @@ import TodoItem from '../components/TodoItem';
 const Home = () => {
     const { todos, dispatch } = useTodosContext();
     const [filter, setFilter] = useState('All');
+    const { user } = useAuthContext();
 
 
     useEffect(() => {
         const fetchTodos = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/todos');
+                const response = await axios.get('http://localhost:4000/todos', {
+                    headers: {
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                });
                 dispatch({ type: 'SET_TODOS', payload: response.data });
             } catch (error) {
                 console.error('Error fetching todos:', error);
             }
         };
 
-        fetchTodos();
-    }, [dispatch]);
+        if (user){
+            fetchTodos();
+        }
+
+    }, [dispatch, user]);
 
     const handleClearCompleted = async () => {
+      if (!user) {
+        return;
+      }
         try {
-          await axios.delete('http://localhost:4000/todos/all/completed');
+          await axios.delete('http://localhost:4000/todos/all/completed', {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          
+          });
           const activeTodos = todos.filter(todo => !todo.completed);
           dispatch({ type: 'SET_TODOS', payload: activeTodos });
         } catch (error) {

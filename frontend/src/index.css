@@ -276,6 +276,7 @@ nav {
 }
 nav a {
   margin-left: 10px;
+  font-weight: 800;
 }
 nav button {
   background: #fff;
@@ -325,6 +326,7 @@ nav button {
   border:  1px solid #ccc;
   border-radius:  3px;
   font-size:  16px; 
+  font-family: "Poppins";
 }
 
 .auth-card button {

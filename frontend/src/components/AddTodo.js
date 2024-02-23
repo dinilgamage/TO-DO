@@ -1,18 +1,28 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useTodosContext } from '../hooks/useTodosContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const AddTodo = () => {
   const { dispatch, successMessage } = useTodosContext();
   const [title, setTitle] = useState('');
   const [error, setError] = useState(null);
+  const { user } = useAuthContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!user) {
+      setError('Please log in to add a todo');
+      return;
+    }
 
     try {
         const response = await axios.post('http://localhost:4000/todos', {
             title,
+        }, {
+            headers: {
+                Authorization: `Bearer ${user.token}`,
+            },
         });
         console.log(response);
         setTitle('');

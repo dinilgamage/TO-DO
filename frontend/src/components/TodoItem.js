@@ -1,16 +1,25 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useTodosContext } from '../hooks/useTodosContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const TodoItem = ({ todo }) => {
   const { dispatch } = useTodosContext();
   const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState(todo.title); // State for the todo title
+  const [title, setTitle] = useState(todo.title); 
+  const { user } = useAuthContext();
 
   const handleToggleCompletion = async () => {
+    if (!user) {
+      return;
+    }
     try {
       const response = await axios.put(`http://localhost:4000/todos/${todo._id}`, {
         completed: !todo.completed
+      },{
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
       });
       console.log(response);
       dispatch({ type: 'TOGGLE_TODO_COMPLETION', payload: response.data });
@@ -20,8 +29,15 @@ const TodoItem = ({ todo }) => {
   };
 
   const handleDelete = async () => {
+    if (!user) {
+      return;
+    }
     try {
-      const response = await axios.delete(`http://localhost:4000/todos/${todo._id}`);
+      const response = await axios.delete(`http://localhost:4000/todos/${todo._id}`,{
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       console.log(response);
       dispatch({ type: 'DELETE_TODO', payload: response.data });
     } catch(error){
@@ -34,9 +50,17 @@ const TodoItem = ({ todo }) => {
   };
 
   const handleSave = async () => {
+    if (!user) {
+      return;
+    }
     try {
       const response = await axios.put(`http://localhost:4000/todos/${todo._id}`, {
         title: title,
+      },{
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      
       });
       console.log(response);
       dispatch({ type: 'UPDATE_TODO', payload: response.data }); 
