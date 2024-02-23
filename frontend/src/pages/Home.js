@@ -16,7 +16,7 @@ const Home = () => {
     useEffect(() => {
         const fetchTodos = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/todos', {
+                const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/todos`, {
                     headers: {
                         Authorization: `Bearer ${user.token}`,
                     },
@@ -38,7 +38,7 @@ const Home = () => {
         return;
       }
         try {
-          await axios.delete('http://localhost:4000/todos/all/completed', {
+          await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/todos/all/completed`, {
             headers: {
               Authorization: `Bearer ${user.token}`,
             },

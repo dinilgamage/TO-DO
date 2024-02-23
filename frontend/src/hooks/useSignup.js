@@ -11,7 +11,7 @@ export const useSignup = () => {
         setError(null);
         setIsLoading(true);
         try {
-            const res = await axios.post('http://localhost:4000/user/signup', {
+            const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/signup`, {
                 email,
                 password,
             });

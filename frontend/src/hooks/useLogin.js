@@ -11,7 +11,7 @@ export const useLogin = () => {
         setError(null);
         setIsLoading(true);
         try {
-            const res = await axios.post('http://localhost:4000/user/login', {
+            const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/login`, {
                 email,
                 password,
             });

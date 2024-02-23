@@ -14,7 +14,7 @@ const TodoItem = ({ todo }) => {
       return;
     }
     try {
-      const response = await axios.put(`http://localhost:4000/todos/${todo._id}`, {
+      const response = await axios.put(`${process.env.REACT_APP_API_BASE_URL}/todos/${todo._id}`, {
         completed: !todo.completed
       },{
         headers: {
@@ -33,7 +33,7 @@ const TodoItem = ({ todo }) => {
       return;
     }
     try {
-      const response = await axios.delete(`http://localhost:4000/todos/${todo._id}`,{
+      const response = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/todos/${todo._id}`,{
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -54,7 +54,7 @@ const TodoItem = ({ todo }) => {
       return;
     }
     try {
-      const response = await axios.put(`http://localhost:4000/todos/${todo._id}`, {
+      const response = await axios.put(`${process.env.REACT_APP_API_BASE_URL}/todos/${todo._id}`, {
         title: title,
       },{
         headers: {
