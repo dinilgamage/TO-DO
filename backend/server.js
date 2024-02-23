@@ -12,7 +12,7 @@ const app = express()
 
 //cors config
 const corsOptions = {
-    origin: 'https://to-ossq094vg-dinil-gamages-projects.vercel.app/login' || 'http://localhost:3000', 
+    origin: 'https://to-do-git-main-dinil-gamages-projects.vercel.app' || 'http://localhost:3000', 
     optionsSuccessStatus:  200, 
   }
 
