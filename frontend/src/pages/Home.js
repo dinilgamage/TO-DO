@@ -22,11 +22,11 @@ const Home = () => {
         };
 
         fetchTodos();
-    }, []);
+    }, [dispatch]);
 
     const handleClearCompleted = async () => {
         try {
-          const response = await axios.delete('http://localhost:4000/todos/all/completed');
+          await axios.delete('http://localhost:4000/todos/all/completed');
           const activeTodos = todos.filter(todo => !todo.completed);
           dispatch({ type: 'SET_TODOS', payload: activeTodos });
         } catch (error) {
