@@ -157,7 +157,6 @@ div.error{
   border: 1px solid var(--error);
   color: var(--error);
   border-radius: 4px;
-  margin-top: 20px 0;
 }
 div.success{
   padding: 10px;
