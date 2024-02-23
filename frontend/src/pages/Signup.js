@@ -33,7 +33,7 @@ const Signup = () => {
                 placeholder="Password"
             />
             <button disabled={isLoading}>Signup</button>
-            {error && <div className='error'>{error}</div>}
+            {error && <div className='error-auth'>{error}</div>}
 
         </form>
         </div>

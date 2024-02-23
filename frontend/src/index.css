@@ -124,31 +124,21 @@ header a {
   font-weight: 500;
   flex-shrink: 0; 
   align-self: center;
-  background-color: #fff;
-  background-image: none;
-  background-position: 0 90%;
-  background-repeat: repeat no-repeat;
-  background-size: 4px 3px;
-  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
-  border: 3px solid #959595;
-  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  
   box-sizing: border-box;
-  color: #41403e;
-  cursor: pointer;
   display: inline-block;
   font-size: 1.3rem;
-  line-height: 23px;
-  outline: none;
+  
   padding: .75rem;
   text-decoration: none;
-  transition: all 235ms ease-in-out;
-  border-bottom-left-radius: 15px 255px;
-  border-bottom-right-radius: 225px 15px;
-  border-top-left-radius: 255px 15px;
-  border-top-right-radius: 15px 225px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  padding:  10px; 
+  border-radius: 5px;
+  border: 2px solid var(--primary);
+  background: #f0ffef;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  
 }
 
 .btn-add:hover {
@@ -175,6 +165,15 @@ div.success{
   background: #efffef;
   border: 1px solid var(--primary);
   color: var(--primary);
+  border-radius: 4px;
+}
+
+div.error-auth{
+  padding: 10px;
+  margin-top: 20px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
   border-radius: 4px;
 }
 

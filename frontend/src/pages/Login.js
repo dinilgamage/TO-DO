@@ -33,7 +33,7 @@ const Login = () => {
                 placeholder="Password"
             />
             <button disabled={isLoading}>Login</button>
-            {error && <div className='error'>{error}</div>}
+            {error && <div className='error-auth'>{error}</div>}
         </form>
         </div>
     );
