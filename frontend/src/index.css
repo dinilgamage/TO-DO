@@ -124,7 +124,7 @@ header a {
   font-weight: 500;
   flex-shrink: 0; 
   align-self: center;
-  
+  color: black;
   box-sizing: border-box;
   display: inline-block;
   font-size: 1.3rem;
@@ -222,7 +222,7 @@ img{
   font-weight: 600;
   border: 3px solid #959595;
   transition: all 0.3s ease-in-out;
-
+  color: black;
 }
 
 .filter-buttons button:hover {
@@ -250,7 +250,7 @@ img{
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   transition: all 0.3s ease-in-out;
-  
+  color: black;
 }
 
 .clear-completed:hover {
@@ -365,6 +365,7 @@ nav button {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   transition: all 0.3s ease-in-out;
+  color: black;
 }
 
 .auth-card button:hover {
