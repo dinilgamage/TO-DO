@@ -11,10 +11,12 @@ const Home = () => {
     const { todos, dispatch } = useTodosContext();
     const [filter, setFilter] = useState('All');
     const { user } = useAuthContext();
+    const [isLoading, setIsLoading] = useState(true);
 
 
     useEffect(() => {
         const fetchTodos = async () => {
+          setIsLoading(true);
             try {
                 const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/todos`, {
                     headers: {
@@ -24,6 +26,9 @@ const Home = () => {
                 dispatch({ type: 'SET_TODOS', payload: response.data });
             } catch (error) {
                 console.error('Error fetching todos:', error);
+            }
+            finally {
+              setIsLoading(false);
             }
         };
 
@@ -66,29 +71,35 @@ const Home = () => {
 
       return (
         <div className="home">
-          {todos && todos.length >  0 ? (
-            <>
-              <div className='tab'>
-                <div className="filter-buttons">
-                  <button className={filter === 'All' ? 'active' : ''} onClick={() => setFilter('All')}>All</button>
-                  <button className={filter === 'Active' ? 'active' : ''} onClick={() => setFilter('Active')}>Active</button>
-                  <button className={filter === 'Completed' ? 'active' : ''} onClick={() => setFilter('Completed')}>Completed</button>
-                </div>
-                <div className='clear-button'>
-                  <button className="clear-completed" onClick={handleClearCompleted}>Clear</button>
-                </div>
-              </div>
-              <div className="todo-list">
-                {filteredTodos.map(todo => (
-                  <TodoItem key={todo._id} todo={todo} />
-                ))}
-              </div>
-            </>
+          {isLoading ? (
+            <div className="overlay">
+              <div className="spinner"></div>
+            </div>
           ) : (
-            <div className="no-todos-message">
+            todos && todos.length > 0 ? (
+              <>
+                <div className='tab'>
+                  <div className="filter-buttons">
+                    <button className={filter === 'All' ? 'active' : ''} onClick={() => setFilter('All')}>All</button>
+                    <button className={filter === 'Active' ? 'active' : ''} onClick={() => setFilter('Active')}>Active</button>
+                    <button className={filter === 'Completed' ? 'active' : ''} onClick={() => setFilter('Completed')}>Completed</button>
+                  </div>
+                  <div className='clear-button'>
+                    <button className="clear-completed" onClick={handleClearCompleted}>Clear</button>
+                  </div>
+                </div>
+                <div className="todo-list">
+                  {filteredTodos.map(todo => (
+                    <TodoItem key={todo._id} todo={todo} />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="no-todos-message">
                 <img src="/notodo.svg" alt="Empty list" />
                 <h2>Add your first todo :)</h2>
-            </div>
+              </div>
+            )
           )}
         </div>
       );
